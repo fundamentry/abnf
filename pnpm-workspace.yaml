@@ -4,7 +4,7 @@ catalog:
   '@fundamentry/eslint-config-json': 1.4.7
   '@fundamentry/eslint-config-prettier': 1.0.6
   '@fundamentry/eslint-config-typescript': 1.1.11
-  '@fundamentry/grammar': 1.6.0
+  '@fundamentry/grammar': 2.0.0
   '@fundamentry/range': 1.1.0
   '@fundamentry/scalar': 1.2.0
   '@fundamentry/stream': 1.1.0
@@ -39,7 +39,7 @@ allowBuilds:
   'unrs-resolver': false
 
 minimumReleaseAgeExclude:
-  - '@fundamentry/grammar@1.6.0'
+  - '@fundamentry/grammar@2.0.0'
   - '@fundamentry/order@1.0.0'
   - '@fundamentry/range@1.1.0'
   - '@fundamentry/scalar@1.2.0'
