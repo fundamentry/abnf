@@ -22,8 +22,8 @@ catalogs:
       specifier: 1.1.11
       version: 1.1.11
     '@fundamentry/grammar':
-      specifier: 1.5.0
-      version: 1.5.0
+      specifier: 1.6.0
+      version: 1.6.0
     '@fundamentry/range':
       specifier: 1.1.0
       version: 1.1.0
@@ -115,7 +115,7 @@ importers:
     dependencies:
       '@fundamentry/grammar':
         specifier: 'catalog:'
-        version: 1.5.0
+        version: 1.6.0
       '@fundamentry/range':
         specifier: 'catalog:'
         version: 1.1.0
@@ -972,8 +972,8 @@ packages:
       eslint-plugin-import: 2.32.0
       typescript: 6.0.3
 
-  '@fundamentry/grammar@1.5.0':
-    resolution: {integrity: sha512-5EaBPcVqc4oHyiKDxw1yI961vBb5D4/5WkBxfK3zpatDMFn/d+HOn3seCNmpKqZpmkDsh0/XnXfItZ5KS8EKLQ==, tarball: https://npm.pkg.github.com/download/@fundamentry/grammar/1.5.0/2cab02d6000987abc1ca466d78e2f797687b5afb}
+  '@fundamentry/grammar@1.6.0':
+    resolution: {integrity: sha512-pG2s/Ut01zi6Ong4tyA+pzeW2qD6QVqvTKT2aPsh/e3Zv1vBtBnHgKC3QLS+8jpx71rjT4OnMMENeDQSC7OHJA==, tarball: https://npm.pkg.github.com/download/@fundamentry/grammar/1.6.0/2c48932af7fcaf095ca3e5f1976673f9db16b858}
 
   '@fundamentry/number@1.0.3':
     resolution: {integrity: sha512-OFKlNmBi7jozJMXYu+uMA0Ak06viHfXyjkmT/x2O9op5kmkkMiCW44bPXgzs/NKLaCtqsbv/A12nxn1y9CF+MQ==, tarball: https://npm.pkg.github.com/download/@fundamentry/number/1.0.3/d378cb7442a8b017ddafb11f20825e3b558bca34}
@@ -4891,7 +4891,7 @@ snapshots:
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.70.0(eslint@8.57.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(eslint@8.57.1(supports-color@7.2.0))
       typescript: 6.0.3
 
-  '@fundamentry/grammar@1.5.0':
+  '@fundamentry/grammar@1.6.0':
     dependencies:
       '@fundamentry/number': 1.0.3
       '@fundamentry/stream': 1.1.0
