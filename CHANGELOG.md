@@ -1,3 +1,9 @@
+## 1.0.3
+
+### 🩹 Fixes
+
+- use latest version of '@fundamentry/grammar' ([e44c49d](https://github.com/fundamentry/abnf/commit/e44c49d))
+
 ## 1.0.2
 
 ### 🩹 Fixes
