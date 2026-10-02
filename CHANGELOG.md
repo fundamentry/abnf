@@ -1,3 +1,10 @@
+## 1.0.4
+
+### 🩹 Fixes
+
+- resolve internal imports to compiled declarations for consumers ([613216c](https://github.com/fundamentry/abnf/commit/613216c))
+- exclude test files from the published package ([1b72605](https://github.com/fundamentry/abnf/commit/1b72605))
+
 ## 1.0.3
 
 ### 🩹 Fixes
