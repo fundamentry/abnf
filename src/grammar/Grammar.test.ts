@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 
 import { Matched, Unmatched } from '@fundamentry/grammar';
 import { Range } from '@fundamentry/range';
-import { codePoint } from '@fundamentry/scalar';
+import { CodePoint } from '@fundamentry/scalar';
 import { Tape } from '@fundamentry/stream';
 
 import { Grammar } from './Grammar.js';
 
-const input = (value: string) => new Tape(Array.from(value, codePoint));
+const input = (value: string) => new Tape(Array.from(value, CodePoint.of));
 
 describe('Grammar', () => {
   const grammar = new Grammar();
@@ -15,7 +15,7 @@ describe('Grammar', () => {
   describe('terminal', () => {
     it('must match a character within a single range', () => {
       const recognition = grammar
-        .terminal(Range.closed(codePoint(0x61), codePoint(0x7a)))
+        .terminal(Range.closed(CodePoint.of(0x61), CodePoint.of(0x7a)))
         .derive(input('m'));
 
       expect(recognition).toBeInstanceOf(Matched);
@@ -26,7 +26,7 @@ describe('Grammar', () => {
 
     it('must not match a character outside every given range', () => {
       const recognition = grammar
-        .terminal(Range.closed(codePoint(0x61), codePoint(0x7a)))
+        .terminal(Range.closed(CodePoint.of(0x61), CodePoint.of(0x7a)))
         .derive(input('A'));
 
       expect(recognition).toBeInstanceOf(Unmatched);
@@ -37,8 +37,8 @@ describe('Grammar', () => {
       char => {
         const recognition = grammar
           .terminal(
-            Range.closed(codePoint(0x30), codePoint(0x39)),
-            Range.closed(codePoint(0x61), codePoint(0x7a))
+            Range.closed(CodePoint.of(0x30), CodePoint.of(0x39)),
+            Range.closed(CodePoint.of(0x61), CodePoint.of(0x7a))
           )
           .derive(input(char));
 
@@ -49,8 +49,8 @@ describe('Grammar', () => {
     it('must not match a character outside every given range in a multi-range terminal', () => {
       const recognition = grammar
         .terminal(
-          Range.closed(codePoint(0x30), codePoint(0x39)),
-          Range.closed(codePoint(0x61), codePoint(0x7a))
+          Range.closed(CodePoint.of(0x30), CodePoint.of(0x39)),
+          Range.closed(CodePoint.of(0x61), CodePoint.of(0x7a))
         )
         .derive(input('Z'));
 
@@ -59,7 +59,7 @@ describe('Grammar', () => {
 
     it('must not match a raw string tape element that is not a code point', () => {
       const recognition = grammar
-        .terminal(Range.closed(codePoint(0x00), codePoint(0x10ffff)))
+        .terminal(Range.closed(CodePoint.of(0x00), CodePoint.of(0x10ffff)))
         .derive(new Tape(['a']));
 
       expect(recognition).toBeInstanceOf(Unmatched);
@@ -67,7 +67,7 @@ describe('Grammar', () => {
 
     it('must match a full astral character represented as a single code point', () => {
       const recognition = grammar
-        .terminal(Range.singleton(codePoint(0x1f600)))
+        .terminal(Range.singleton(CodePoint.of(0x1f600)))
         .derive(input('😀'));
 
       expect(recognition).toBeInstanceOf(Matched);
