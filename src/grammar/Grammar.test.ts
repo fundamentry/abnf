@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { assert, describe, expect, it } from 'vitest';
 
 import { Matched, Unmatched } from '@fundamentry/grammar';
 import { Range } from '@fundamentry/range';
@@ -20,8 +20,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe('m');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe('m');
     });
 
     it('must not match a character outside every given range', () => {
@@ -72,8 +72,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe('😀');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe('😀');
     });
   });
 
@@ -83,8 +83,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(letter);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(letter);
     });
 
     it('must not match a digit', () => {
@@ -116,8 +116,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(bit);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(bit);
     });
 
     it('must not match a digit outside 0-1', () => {
@@ -133,8 +133,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(char);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(char);
     });
 
     it('must match a letter already recognized by another rule', () => {
@@ -162,8 +162,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe('\r');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe('\r');
     });
 
     it('must not match a linefeed', () => {
@@ -179,8 +179,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value()).toBe('\r\n');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe('\r\n');
     });
 
     it('must not match a carriage return without a following linefeed', () => {
@@ -202,8 +202,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(char);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(char);
     });
 
     it('must match a carriage return already recognized by another rule', () => {
@@ -225,8 +225,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(digit);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(digit);
     });
 
     it('must not match a letter', () => {
@@ -242,8 +242,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe('"');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe('"');
     });
 
     it('must not match an apostrophe', () => {
@@ -259,8 +259,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(char);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(char);
     });
 
     it.each(['g', 'G'])("must not match '%s'", char => {
@@ -276,8 +276,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe('\t');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe('\t');
     });
 
     it('must not match a space', () => {
@@ -293,8 +293,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe('\n');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe('\n');
     });
 
     it('must not match a carriage return', () => {
@@ -310,7 +310,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched) expect(recognition.value()).toBe('');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe('');
     });
 
     it('must match a single space', () => {
@@ -318,7 +319,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched) expect(recognition.value()).toBe(' ');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe(' ');
     });
 
     it('must match consecutive whitespace characters', () => {
@@ -326,8 +328,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value()).toBe(' \t');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe(' \t');
     });
 
     it('must match a folded CRLF WSP sequence', () => {
@@ -335,8 +337,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value()).toBe('\r\n ');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe('\r\n ');
     });
 
     it('must match a space followed by a folded CRLF WSP sequence', () => {
@@ -344,8 +346,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value()).toBe(' \r\n\t');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe(' \r\n\t');
     });
 
     it('must match an empty string when the input does not start with whitespace', () => {
@@ -353,7 +355,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched) expect(recognition.value()).toBe('');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe('');
     });
 
     it('must not consume a trailing CR that is not followed by an LF and WSP', () => {
@@ -361,7 +364,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched) expect(recognition.value()).toBe(' ');
+      assert(recognition instanceof Matched);
+      expect(recognition.value()).toBe(' ');
     });
   });
 
@@ -371,8 +375,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(char);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(char);
     });
 
     it('must match a letter already recognized by another rule', () => {
@@ -394,8 +398,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(' ');
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(' ');
     });
 
     it('must not match a horizontal tab', () => {
@@ -411,8 +415,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(char);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(char);
     });
 
     it.each(['a', '1'])(
@@ -443,8 +447,8 @@ describe('Grammar', () => {
 
       expect(recognition).toBeInstanceOf(Matched);
 
-      if (recognition instanceof Matched)
-        expect(recognition.value().toString()).toBe(char);
+      assert(recognition instanceof Matched);
+      expect(recognition.value().toString()).toBe(char);
     });
 
     it('must not match a letter', () => {
