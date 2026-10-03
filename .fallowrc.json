@@ -31,11 +31,23 @@
         "patterns": [
           "src/grammar/**"
         ]
+      },
+      {
+        "name": "symbol",
+        "patterns": [
+          "src/symbol/**"
+        ]
       }
     ],
     "rules": [
       {
         "from": "grammar",
+        "allow": [
+          "symbol"
+        ]
+      },
+      {
+        "from": "symbol",
         "allow": []
       }
     ]

@@ -22,14 +22,14 @@ catalogs:
       specifier: 1.1.11
       version: 1.1.11
     '@fundamentry/grammar':
-      specifier: 2.2.0
-      version: 2.2.0
+      specifier: 3.1.0
+      version: 3.1.0
     '@fundamentry/range':
       specifier: 1.1.0
       version: 1.1.0
     '@fundamentry/scalar':
-      specifier: 2.0.0
-      version: 2.0.0
+      specifier: 3.0.0
+      version: 3.0.0
     '@fundamentry/stream':
       specifier: 1.3.0
       version: 1.3.0
@@ -115,13 +115,13 @@ importers:
     dependencies:
       '@fundamentry/grammar':
         specifier: 'catalog:'
-        version: 2.2.0
+        version: 3.1.0
       '@fundamentry/range':
         specifier: 'catalog:'
         version: 1.1.0
       '@fundamentry/scalar':
         specifier: 'catalog:'
-        version: 2.0.0
+        version: 3.0.0
     devDependencies:
       '@commitlint/cli':
         specifier: 'catalog:'
@@ -999,8 +999,8 @@ packages:
       eslint-plugin-import: 2.32.0
       typescript: 6.0.3
 
-  '@fundamentry/grammar@2.2.0':
-    resolution: {integrity: sha512-cMFX22/OF7q72fr3Ry7Qh6lnQXyxB/uL4fDP+ujQIGZ6EHI/SMObezr/jxe5ht9ZihEU50Yx43r1tv5hwZVFkg==, tarball: https://npm.pkg.github.com/download/@fundamentry/grammar/2.2.0/0e46c5b12902e28ec15d5b08ec12dd26b029c0f5}
+  '@fundamentry/grammar@3.1.0':
+    resolution: {integrity: sha512-IKc46mnGXlQg7oilLUGLxTvcMcj8uG9lKnb4yT2dH3V6FH75paGt66GFiuaHKQWFBudCdeQYweY/TzZPDJjmTg==, tarball: https://npm.pkg.github.com/download/@fundamentry/grammar/3.1.0/1373def00405b1dfed16ec3ab35371706540f2d2}
 
   '@fundamentry/number@1.0.3':
     resolution: {integrity: sha512-OFKlNmBi7jozJMXYu+uMA0Ak06viHfXyjkmT/x2O9op5kmkkMiCW44bPXgzs/NKLaCtqsbv/A12nxn1y9CF+MQ==, tarball: https://npm.pkg.github.com/download/@fundamentry/number/1.0.3/d378cb7442a8b017ddafb11f20825e3b558bca34}
@@ -1014,14 +1014,17 @@ packages:
   '@fundamentry/range@1.1.0':
     resolution: {integrity: sha512-4yRW3Zy6Byx4nnZUCRQvGOqpkhgikmrvnP4rV8f/wT9fNeUxDTgxiUTZu3jnzkdLCZY7BoOaspQyAfo8HOguEg==, tarball: https://npm.pkg.github.com/download/@fundamentry/range/1.1.0/1f7b3ac7efb07ce82f6c49a8f7d928ce181111b8}
 
-  '@fundamentry/scalar@2.0.0':
-    resolution: {integrity: sha512-pkfrD7VH60NrnIUHRTRClIovhSGlxSXbbeRaAwO5VsPPB6WZu7/HeQY4Gfrlu9St7K/SsBcEXSKtTWeg8OfHvw==, tarball: https://npm.pkg.github.com/download/@fundamentry/scalar/2.0.0/3d9e7bc3db5dfa002f2dc2b17583cd22b0aad91a}
+  '@fundamentry/scalar@3.0.0':
+    resolution: {integrity: sha512-+mjLgI2bmW/j/ysjCKN57tqJTwk1aL71MX5jd7WV6h87luZqBXia1S8Z+vaGltfrNpvtT4RLCD0/yf5q72xjeg==, tarball: https://npm.pkg.github.com/download/@fundamentry/scalar/3.0.0/65ae23f6e502f28a7a9fd92d1c2600b6abe8caf2}
 
   '@fundamentry/stream@1.3.0':
     resolution: {integrity: sha512-uWAaVrPKOPC1y6Rvn4JC1uROmJSzVD/a2MOP2zCxOdT61PM/bAGkJq7ZHf1+U/2mcsonrSCE3aox+dI795lpIQ==, tarball: https://npm.pkg.github.com/download/@fundamentry/stream/1.3.0/42b2432eb811b95af53fc79c4b5ce13124d007cb}
 
   '@fundamentry/trait@1.1.0':
     resolution: {integrity: sha512-YwsXLvaXyFd2qFQUrhM3z9Vk5khuowlZA/XlIW+QlttKwx6FJoB9N6jtyWv3Ks4pEvK2YssG4LltLxjW9pWc2g==, tarball: https://npm.pkg.github.com/download/@fundamentry/trait/1.1.0/84c1b432516dacba963db346b6b35fee2cffd0d4}
+
+  '@fundamentry/trait@2.0.0':
+    resolution: {integrity: sha512-cC1skiRP4jNunbeTIeuGIah7BsdNXOQ9No49+hTv/daWxHhfgqBQjHg1giQmCis3wewoHPfAbprZMB3YyHluqQ==, tarball: https://npm.pkg.github.com/download/@fundamentry/trait/2.0.0/d028cc623f97ecfbd59487b16a6c01e2aa36cb52}
 
   '@fundamentry/typescript-config@2.0.0':
     resolution: {integrity: sha512-0kN2ZyyV6ZkS0OIp66o+HTVU0JHVZsMQmAh09A6YffpPyPCagUsLLFNtH4SQ8gti5aoxXFvyVXvqHTJKBFLhVw==, tarball: https://npm.pkg.github.com/download/@fundamentry/typescript-config/2.0.0/847fa6d298999c18914fdffafb6ddd2318056ab7}
@@ -4961,15 +4964,15 @@ snapshots:
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.71.0(eslint@8.57.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(eslint@8.57.1(supports-color@7.2.0))
       typescript: 6.0.3
 
-  '@fundamentry/grammar@2.2.0':
+  '@fundamentry/grammar@3.1.0':
     dependencies:
       '@fundamentry/category': 1.0.0(@fundamentry/coproduct@1.1.0)
       '@fundamentry/coproduct': 1.1.0
       '@fundamentry/number': 1.2.0
       '@fundamentry/range': 1.1.0
-      '@fundamentry/scalar': 2.0.0
+      '@fundamentry/scalar': 3.0.0
       '@fundamentry/stream': 1.3.0
-      '@fundamentry/trait': 1.1.0
+      '@fundamentry/trait': 2.0.0
 
   '@fundamentry/number@1.0.3': {}
 
@@ -4986,9 +4989,9 @@ snapshots:
       '@fundamentry/order': 1.0.0
       '@fundamentry/trait': 1.1.0
 
-  '@fundamentry/scalar@2.0.0':
+  '@fundamentry/scalar@3.0.0':
     dependencies:
-      '@fundamentry/trait': 1.1.0
+      '@fundamentry/trait': 2.0.0
 
   '@fundamentry/stream@1.3.0':
     dependencies:
@@ -4996,6 +4999,8 @@ snapshots:
       '@fundamentry/trait': 1.1.0
 
   '@fundamentry/trait@1.1.0': {}
+
+  '@fundamentry/trait@2.0.0': {}
 
   '@fundamentry/typescript-config@2.0.0(typescript@6.0.3)':
     dependencies:

@@ -1,93 +1,91 @@
-import { Rule } from '@fundamentry/grammar';
-import { Range, RangeSet } from '@fundamentry/range';
-import { CodePoint } from '@fundamentry/scalar';
+import { Codec, Production } from '@fundamentry/grammar';
+
+import {
+  ALPHA,
+  BIT,
+  CHAR,
+  CR,
+  CRLF,
+  CTL,
+  DIGIT,
+  DQUOTE,
+  HEXDIG,
+  HTAB,
+  LF,
+  LWSP,
+  OCTET,
+  SP,
+  VCHAR,
+  WSP,
+} from '#project/symbol';
 
 export class Grammar {
-  terminal(...ranges: readonly Range<CodePoint>[]): Rule<CodePoint> {
-    const set = RangeSet.from(ranges);
-
-    return Rule.matching(candidate => candidate instanceof CodePoint).filter(
-      value => set.contains(value)
-    );
+  alpha(): Production<ALPHA> {
+    return ALPHA.production();
   }
 
-  alpha(): Rule<CodePoint> {
-    return this.terminal(
-      Range.closed(CodePoint.of(0x41), CodePoint.of(0x5a)),
-      Range.closed(CodePoint.of(0x61), CodePoint.of(0x7a))
-    );
+  bit(): Production<BIT> {
+    return BIT.production();
   }
 
-  bit(): Rule<CodePoint> {
-    return this.terminal(Range.closed(CodePoint.of(0x30), CodePoint.of(0x31)));
+  char(): Production<CHAR> {
+    return CHAR.production();
   }
 
-  char(): Rule<CodePoint> {
-    return this.terminal(Range.closed(CodePoint.of(0x01), CodePoint.of(0x7f)));
+  cr(): Production<CR> {
+    return CR.production();
   }
 
-  cr(): Rule<CodePoint> {
-    return this.terminal(Range.singleton(CodePoint.of(0x0d)));
+  crlf(): Production<CRLF> {
+    return Codec.tuple(this.cr(), this.lf()).refine(CRLF.prism());
   }
 
-  crlf(): Rule<string> {
-    return Rule.sequence(this.cr(), this.lf()).map(
-      ([cr, lf]) => cr.toString() + lf.toString()
-    );
+  ctl(): Production<CTL> {
+    return CTL.production();
   }
 
-  ctl(): Rule<CodePoint> {
-    return this.terminal(
-      Range.closed(CodePoint.of(0x00), CodePoint.of(0x1f)),
-      Range.singleton(CodePoint.of(0x7f))
-    );
+  digit(): Production<DIGIT> {
+    return DIGIT.production();
   }
 
-  digit(): Rule<CodePoint> {
-    return this.terminal(Range.closed(CodePoint.of(0x30), CodePoint.of(0x39)));
+  dquote(): Production<DQUOTE> {
+    return DQUOTE.production();
   }
 
-  dquote(): Rule<CodePoint> {
-    return this.terminal(Range.singleton(CodePoint.of(0x22)));
+  hexdig(): Production<HEXDIG> {
+    return this.digit()
+      .or(Production.literal(HEXDIG.LETTERS))
+      .refine(HEXDIG.prism());
   }
 
-  hexdig(): Rule<CodePoint> {
-    return this.digit().or(
-      this.terminal(
-        Range.closed(CodePoint.of(0x41), CodePoint.of(0x46)),
-        Range.closed(CodePoint.of(0x61), CodePoint.of(0x66))
-      )
-    );
+  htab(): Production<HTAB> {
+    return HTAB.production();
   }
 
-  htab(): Rule<CodePoint> {
-    return this.terminal(Range.singleton(CodePoint.of(0x09)));
+  lf(): Production<LF> {
+    return LF.production();
   }
 
-  lf(): Rule<CodePoint> {
-    return this.terminal(Range.singleton(CodePoint.of(0x0a)));
-  }
-
-  lwsp(): Rule<string> {
-    return Rule.sequence(this.crlf().optional(), this.wsp())
-      .map(([crlf = '', wsp]) => crlf + wsp.toString())
+  lwsp(): Production<LWSP> {
+    return this.wsp()
+      .or(Codec.tuple(this.crlf(), this.wsp()))
       .many()
-      .map(parts => parts.join(''));
+      .refine(LWSP.prism());
   }
 
-  octet(): Rule<CodePoint> {
-    return this.terminal(Range.closed(CodePoint.of(0x00), CodePoint.of(0xff)));
+  octet(): Production<OCTET> {
+    return OCTET.production();
   }
 
-  sp(): Rule<CodePoint> {
-    return this.terminal(Range.singleton(CodePoint.of(0x20)));
+  sp(): Production<SP> {
+    return SP.production();
   }
 
-  vchar(): Rule<CodePoint> {
-    return this.terminal(Range.closed(CodePoint.of(0x21), CodePoint.of(0x7e)));
+  vchar(): Production<VCHAR> {
+    return VCHAR.production();
   }
 
-  wsp(): Rule<CodePoint> {
-    return this.sp().or(this.htab());
+  wsp(): Production<WSP> {
+    return this.sp().or(this.htab()).refine(WSP.prism());
   }
 }
