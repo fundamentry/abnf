@@ -1,3 +1,13 @@
+# 2.0.0
+
+### 🚀 Features
+
+- ⚠️  model core rules as symbols over grammar productions ([ba70f80](https://github.com/fundamentry/abnf/commit/ba70f80))
+
+### ⚠️  Breaking Changes
+
+- model core rules as symbols over grammar productions  ([ba70f80](https://github.com/fundamentry/abnf/commit/ba70f80))
+
 ## 1.0.4
 
 ### 🩹 Fixes
