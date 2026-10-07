@@ -59,10 +59,8 @@
     "test:watch": "vitest",
     "typecheck": "tsc"
   },
-  "dependencies": {
-    "@fundamentry/grammar": "catalog:",
-    "@fundamentry/range": "catalog:",
-    "@fundamentry/scalar": "catalog:"
+  "peerDependencies": {
+    "@fundamentry/grammar": "^5.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -70,7 +68,7 @@
     "@fundamentry/eslint-config-json": "catalog:",
     "@fundamentry/eslint-config-prettier": "catalog:",
     "@fundamentry/eslint-config-typescript": "catalog:",
-    "@fundamentry/stream": "catalog:",
+    "@fundamentry/grammar": "catalog:",
     "@fundamentry/typescript-config": "catalog:",
     "@nx/js": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",

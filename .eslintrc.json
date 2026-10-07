@@ -53,6 +53,12 @@
         "import/extensions": "off",
         "import/no-unresolved": "off",
         "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-use-before-define": [
+          "error",
+          {
+            "variables": false
+          }
+        ],
         "class-methods-use-this": "off"
       }
     },

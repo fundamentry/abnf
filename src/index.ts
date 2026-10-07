@@ -1,1 +1,1 @@
-export * as ABNF from './ABNF.js';
+export * from '#project/grammar';

@@ -1,91 +1,53 @@
-import { Codec, Production } from '@fundamentry/grammar';
+import { Rule } from '@fundamentry/grammar';
 
-import {
-  ALPHA,
-  BIT,
-  CHAR,
-  CR,
-  CRLF,
-  CTL,
-  DIGIT,
-  DQUOTE,
-  HEXDIG,
-  HTAB,
-  LF,
-  LWSP,
-  OCTET,
-  SP,
-  VCHAR,
-  WSP,
-} from '#project/symbol';
+export const alpha = new Rule('ALPHA', codec =>
+  codec.character(['A', 'Z']).caseless()
+);
 
-export class Grammar {
-  alpha(): Production<ALPHA> {
-    return ALPHA.production();
-  }
+export const bit = new Rule('BIT', codec =>
+  codec.literal('0').or(codec.literal('1'))
+);
 
-  bit(): Production<BIT> {
-    return BIT.production();
-  }
+export const char = new Rule('CHAR', codec => codec.character([0x01, 0x7f]));
 
-  char(): Production<CHAR> {
-    return CHAR.production();
-  }
+export const cr = new Rule('CR', codec => codec.character(0x0d));
 
-  cr(): Production<CR> {
-    return CR.production();
-  }
+export const crlf = new Rule('CRLF', codec => codec.sequence(cr, lf));
 
-  crlf(): Production<CRLF> {
-    return Codec.tuple(this.cr(), this.lf()).refine(CRLF.prism());
-  }
+export const ctl = new Rule('CTL', codec =>
+  codec.character([0x00, 0x1f], 0x7f)
+);
 
-  ctl(): Production<CTL> {
-    return CTL.production();
-  }
+export const digit = new Rule('DIGIT', codec => codec.character(['0', '9']));
 
-  digit(): Production<DIGIT> {
-    return DIGIT.production();
-  }
+export const dquote = new Rule('DQUOTE', codec => codec.character(0x22));
 
-  dquote(): Production<DQUOTE> {
-    return DQUOTE.production();
-  }
+export const hexdig = new Rule('HEXDIG', codec =>
+  codec
+    .choice(
+      digit,
+      codec.literal('A'),
+      codec.literal('B'),
+      codec.literal('C'),
+      codec.literal('D'),
+      codec.literal('E'),
+      codec.literal('F')
+    )
+    .caseless()
+);
 
-  hexdig(): Production<HEXDIG> {
-    return this.digit()
-      .or(Production.literal(HEXDIG.LETTERS))
-      .refine(HEXDIG.prism());
-  }
+export const htab = new Rule('HTAB', codec => codec.character(0x09));
 
-  htab(): Production<HTAB> {
-    return HTAB.production();
-  }
+export const lf = new Rule('LF', codec => codec.character(0x0a));
 
-  lf(): Production<LF> {
-    return LF.production();
-  }
+export const lwsp = new Rule('LWSP', codec =>
+  wsp.or(codec.sequence(crlf, wsp)).many()
+);
 
-  lwsp(): Production<LWSP> {
-    return this.wsp()
-      .or(Codec.tuple(this.crlf(), this.wsp()))
-      .many()
-      .refine(LWSP.prism());
-  }
+export const octet = new Rule('OCTET', codec => codec.character([0x00, 0xff]));
 
-  octet(): Production<OCTET> {
-    return OCTET.production();
-  }
+export const sp = new Rule('SP', codec => codec.character(0x20));
 
-  sp(): Production<SP> {
-    return SP.production();
-  }
+export const vchar = new Rule('VCHAR', codec => codec.character([0x21, 0x7e]));
 
-  vchar(): Production<VCHAR> {
-    return VCHAR.production();
-  }
-
-  wsp(): Production<WSP> {
-    return this.sp().or(this.htab()).refine(WSP.prism());
-  }
-}
+export const wsp = new Rule('WSP', () => sp.or(htab));

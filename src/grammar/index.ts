@@ -1,1 +1,1 @@
-export { Grammar } from './Grammar.js';
+export * from './Grammar.js';
