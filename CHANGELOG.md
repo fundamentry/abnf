@@ -1,3 +1,13 @@
+# 3.0.0
+
+### 🚀 Features
+
+- ⚠️  expose core rules as standalone rules ([db9d681](https://github.com/fundamentry/abnf/commit/db9d681))
+
+### ⚠️  Breaking Changes
+
+- expose core rules as standalone rules  ([db9d681](https://github.com/fundamentry/abnf/commit/db9d681))
+
 # 2.0.0
 
 ### 🚀 Features
